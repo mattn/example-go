@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/passageidentity/passage-go"
@@ -9,8 +10,8 @@ import (
 
 func authRequired() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		psg, _ := passage.New("<Passage App ID>", &passage.Config{
-			APIKey: "<Passage API Key>",
+		psg, _ := passage.New(os.Getenv("PASSAGE_APP_ID"), &passage.Config{
+			APIKey: os.Getenv("PASSAGE_API_KEY"),
 		})
 		passageUserID, err := psg.AuthenticateRequest(c.Request)
 		if err != nil {
