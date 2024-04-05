@@ -18,6 +18,7 @@ func authRequired() gin.HandlerFunc {
 			// Authentication failed!
 			c.HTML(http.StatusForbidden, "unauthorized.html", nil)
 			c.Abort()
+			return
 		}
 
 		// Get the authenticated user's email and set it in the context
@@ -25,6 +26,7 @@ func authRequired() gin.HandlerFunc {
 		if err != nil {
 			// This should not fail, but abort the request if it does
 			c.AbortWithStatus(http.StatusInternalServerError)
+			return
 		}
 		c.Set("userEmail", passageUser.Email)
 
