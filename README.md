@@ -11,3 +11,5 @@ Passage is an authentication platform that enables developers to add biometric a
 ## Examples in this Repo
 * [Authenticating with Passage](01-Login/)
 * [Authentication with a Profile Page](02-Login-With-Profile/)
+* [Example app using Gin](03-Gin/)
+* [Example app using Echo](04-Echo/)
